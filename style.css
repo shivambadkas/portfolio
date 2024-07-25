@@ -1,0 +1,56 @@
+body {
+    font-family: Georgia, serif;
+    margin: 50px auto;
+    text-align: center;
+  }
+  
+  header {
+    text-align: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    text-decoration: none;
+    color: #333;
+    font-weight: normal;
+    padding: 10px 20px;
+    border-bottom: 1px solid transparent;
+  }
+  
+  nav a:hover {
+    border-bottom: 1px solid #ccc;
+  }
+  
+  h1, h2 {
+    font-weight: normal;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+  }
+  
+  footer img {
+    width: 24px;
+    height: 24px;
+    margin: 0 10px;
+  }
+
+  #bio {
+    text-align: center;
+    margin-top: 30px;
+    width: 80%; /* Adjust width as needed */
+    margin: 0 auto; /* Center the bio section */
+  }
