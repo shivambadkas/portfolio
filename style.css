@@ -1,56 +1,116 @@
-body {
-    font-family: Georgia, serif;
-    margin: 50px auto;
-    text-align: center;
-  }
-  
-  header {
-    text-align: center;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    padding: 0;
-    margin: 0;
-  }
-  
-  nav li {
-    margin: 0 10px;
-  }
-  
-  nav a {
-    text-decoration: none;
-    color: #333;
-    font-weight: normal;
-    padding: 10px 20px;
-    border-bottom: 1px solid transparent;
-  }
-  
-  nav a:hover {
-    border-bottom: 1px solid #ccc;
-  }
-  
-  h1, h2 {
-    font-weight: normal;
-  }
-  
-  footer {
-    display: flex;
-    justify-content: center;
-    margin-top: 30px;
-  }
-  
-  footer img {
-    width: 24px;
-    height: 24px;
-    margin: 0 10px;
-  }
+p {
+  margin-top: 3px;
+  margin-bottom: 10px;
+  margin-right: 200px;
+  margin-left: 200px;
+}
 
-  #bio {
-    text-align: center;
-    margin-top: 30px;
-    width: 80%; /* Adjust width as needed */
-    margin: 0 auto; /* Center the bio section */
-  }
+body {
+  font-family: Georgia, serif;
+  margin: 50px auto;
+  text-align: center;
+}
+
+header {
+  text-align: center;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  margin: 0;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: normal;
+  padding: 10px 20px;
+  border-bottom: 1px solid transparent;
+}
+
+nav a:hover {
+  border-bottom: 1px solid #ccc;
+}
+
+h1, h2 {
+  font-weight: normal;
+}
+
+#social-icons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#social-icons img {
+  width: 24px;
+  height: 24px;
+  margin: 0 10px;
+}
+
+#bio {
+  text-align: left;
+  margin-left: 300px; 
+  margin-right: 300px;
+}
+
+#work-experience {
+  text-align: left;
+  margin-bottom: 50px;
+  margin-left: 500px; 
+  margin-right: 500px;
+}
+
+#responsibilities{
+  text-align: left;
+  margin-bottom: 50px;
+  margin-left: 300px; 
+  margin-right: 300px;
+
+}
+
+h1{
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+.bullet-point {
+  content: "+";
+ /* Adjust margin as needed */
+}
+
+ul {
+  list-style-type: none;
+}
+footer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.container{
+  text-align: left;
+  margin-bottom: 50px;
+  margin-left: 300px; 
+  margin-right: 300px
+}
+
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap: 10px;
+}
+
+.photo-item {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  cursor: pointer;
+}
