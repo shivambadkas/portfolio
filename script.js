@@ -1,3 +1,6 @@
+
+
+//toggle dark mode
 document
   .querySelector("#dark-mode-toggle")
   .addEventListener('click', () => {
