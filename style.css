@@ -106,7 +106,8 @@
   --border-width-thick: 2.27px;
   --sidenote-target-border-color: hsl(55, 55%, 70%);
   --footnotes-border-color: hsl(0, 0%, 39%);
-  --text-indent-size: 1.463rem; /* In 12pt [Latin Modern font] LaTeX article
+  --text-indent-size: 1.463rem;
+  /* In 12pt [Latin Modern font] LaTeX article
   \parindent =~ 17.625pt; taking also into account the ratio
   1pt[LaTeX] = (72 / 72.27) * 1pt[HTML], with default 12pt/1rem LaTeX.css font
   size, the identation value in rem CSS units is:
@@ -128,7 +129,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-   .latex-dark-auto {
+  .latex-dark-auto {
     --body-color: hsl(0, 0%, 86%);
     --body-bg-color: hsl(0, 0%, 16%);
     --link-visited: hsl(196 80% 77%);
@@ -142,10 +143,12 @@
     --proof-symbol-filter: invert(80%);
   }
 }
+
 /* Make default font-size 1rem and add smooth scrolling to anchors */
 html {
   font-size: 1rem;
 }
+
 @media (prefers-reduced-motion: no-preference) {
   html {
     scroll-behavior: smooth;
@@ -196,7 +199,7 @@ textarea {
 }
 
 /* Natural flow and rhythm in articles by default */
-article > * + * {
+article>*+* {
   margin-top: 1em;
 }
 
@@ -208,10 +211,12 @@ article > * + * {
   text-align: center;
   margin-top: 0;
 }
+
 .abstract {
   margin: 2.25rem 0;
 }
-.abstract > h2 {
+
+.abstract>h2 {
   font-size: 1rem;
   margin-bottom: -0.2rem;
 }
@@ -221,31 +226,41 @@ article > * + * {
   text-align: center;
   margin-top: 0;
 }
+
 .container {
   margin: 2.25rem 0;
 }
+
 .container p {
   font-size: 1rem;
   margin-bottom: -0.2rem;
   text-align: left;
 }
 
-.book-reviews{
+.book-reviews {
   text-align: left;
 }
-.essays{
+
+.essays {
   text-align: left;
 }
-.articles{
+
+.articles {
   text-align: left;
 }
+
 ul {
-  list-style-type: none; /* Remove default bullet points */
-  text-align: center; /* Center the list items */
+  list-style-type: none;
+  /* Remove default bullet points */
+  text-align: center;
+  /* Center the list items */
 }
+
 ol {
-  list-style-type: decimal; /* Use decimal numbers for the list */
-  text-align: left; /* Align the list to the left */
+  list-style-type: decimal;
+  /* Use decimal numbers for the list */
+  text-align: left;
+  /* Align the list to the left */
 }
 
 /* Indents paragraphs like in LaTeX documents*/
@@ -263,9 +278,9 @@ p.no-indent {
   text-indent: 0;
 }
 
-.indent-pars h2 + p,
-.indent-pars h3 + p,
-.indent-pars h4 + p {
+.indent-pars h2+p,
+.indent-pars h3+p,
+.indent-pars h4+p {
   text-indent: 0;
 }
 
@@ -273,20 +288,28 @@ p.no-indent {
 
 header {
   text-align: center;
-  
+
 }
+
 #dark-mode-toggle {
   position: absolute;
-  top: 20px; /* Adjust top position as needed */
-  right: 20px; /* Adjust right position as needed */
+  top: 20px;
+  /* Adjust top position as needed */
+  right: 20px;
+  /* Adjust right position as needed */
 }
-@media (max-width: 768px) { /* Adjust breakpoint as needed */
+
+@media (max-width: 768px) {
+
+  /* Adjust breakpoint as needed */
   #dark-mode-toggle {
     position: relative;
     display: block;
-    margin: 0 auto; /* Center the button */
+    margin: 0 auto;
+    /* Center the button */
   }
 }
+
 nav ul {
   list-style: none;
   display: flex;
@@ -311,6 +334,10 @@ nav a:hover {
   border-bottom: 1px solid #ccc;
 }
 
+.latex-dark nav a {
+  color: white;
+}
+
 
 #social-icons {
   max-width: 100%;
@@ -330,38 +357,206 @@ nav a:hover {
   margin: 0 10px;
 }
 
-img {
-  max-width: 100%;
-  transition:transform 0.25s ease;
-}
-
-img:hover {
-  -webkit-transform:scale(1.5); /* or some other value */
-  transform:scale(2);
-}
-
+/* Photo Gallery Grid */
 .photo-gallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 10px;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  margin-top: 20px;
 }
 
 .photo-item {
   width: 100%;
-  height: 300px;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.photo-item:nth-child(3n) {
+  grid-column: span 2;
+}
+
+.photo-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+/* Lightbox Modal */
+.lightbox {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  z-index: 1000;
+  padding-top: 60px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.9);
+}
+
+.lightbox-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 1000px;
+  max-height: 80vh;
+  object-fit: contain;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0)
+  }
+
+  to {
+    transform: scale(1)
+  }
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
   cursor: pointer;
 }
 
-/* Make links red */
-a,
-a:visited {
-  color: var(--link-visited);
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
 }
 
-a:focus {
-  outline-offset: 2px;
-  outline: 2px solid var(--link-focus-outline);
+/* Next & previous buttons */
+.prev,
+.next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -50px;
+  color: white;
+  font-weight: bold;
+  font-size: 20px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  -webkit-user-select: none;
+  z-index: 1001;
+  /* Ensure above image */
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* Position the "prev button" to the left */
+.prev {
+  left: 0;
+  border-radius: 0 3px 3px 0;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover,
+.next:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Responsive adjustments */
+@media only screen and (max-width: 700px) {
+  body {
+    padding: 1rem 0.75rem;
+    /* Reduce padding on mobile */
+  }
+
+  nav ul {
+    flex-wrap: wrap;
+    /* Allow nav items to wrap */
+  }
+
+  nav li {
+    margin: 5px;
+    /* Adjust margin for wrapped items */
+  }
+
+  nav a {
+    padding: 10px 15px;
+    /* Ensure good touch target */
+  }
+
+  h1 {
+    font-size: 2rem;
+    /* Scale down h1 */
+    line-height: 2.5rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    /* Scale down h2 */
+    margin-top: 2rem;
+  }
+
+  .lightbox-content {
+    width: 100%;
+  }
+
+  .photo-gallery {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-item:nth-child(3n) {
+    grid-column: auto;
+  }
+
+  /* Lightbox arrows on mobile */
+  .prev,
+  .next {
+    padding: 12px;
+    font-size: 18px;
+    top: auto;
+    bottom: 20px;
+    /* Move to bottom for easier reach? Or keep centered but ensure no overlap */
+    margin-top: 0;
+    transform: translateY(0);
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Always visible background */
+  }
+
+  .prev {
+    left: 10px;
+    border-radius: 3px;
+  }
+
+  .next {
+    right: 10px;
+    border-radius: 3px;
+  }
+}
 
 /* Heading typography */
 h1 {
@@ -405,17 +600,17 @@ h6 {
   line-height: 1.625rem;
 }
 
-h1 + h2 {
+h1+h2 {
   margin-top: 1.625rem;
 }
 
-h2 + h3,
-h3 + h4,
-h4 + h5 {
+h2+h3,
+h3+h4,
+h4+h5 {
   margin-top: 0.8rem;
 }
 
-h5 + h6 {
+h5+h6 {
   margin-top: -0.8rem;
 }
 
@@ -434,5 +629,3 @@ p {
   -moz-hyphens: auto;
   margin-top: 1rem;
 }
-
-
