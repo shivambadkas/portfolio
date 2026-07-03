@@ -380,6 +380,19 @@ body.photos-page {
   margin-right: auto;
 }
 
+.photo-gallery.js-masonry {
+  display: flex;
+  column-count: initial;
+  gap: 20px;
+}
+
+.masonry-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
 .photo-item {
   width: 100%;
   height: auto;
@@ -390,6 +403,7 @@ body.photos-page {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   break-inside: avoid;
 }
+
 
 .photo-item:hover {
   transform: scale(1.02);
@@ -541,11 +555,15 @@ body.photos-page {
   }
 
   .photo-gallery {
-    grid-template-columns: 1fr;
+    column-count: 1;
   }
 
-  .photo-item:nth-child(3n) {
-    grid-column: auto;
+  .photo-gallery.js-masonry {
+    display: block;
+  }
+
+  .masonry-col {
+    display: contents;
   }
 
   /* Lightbox arrows on mobile */
